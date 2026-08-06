@@ -4,22 +4,29 @@ window.addEventListener("load", () => {
     const hero = document.getElementById("hero");
     const btn = document.getElementById("explorar");
 
-    // Ocultar splash después de 2 segundos
+    // Splash inicial
     setTimeout(() => {
         splash.classList.add("hide");
     }, 2000);
 
-    // Al tocar "Explorar en tiempo real"
+    // Entrar al modo mapa
     btn.addEventListener("click", () => {
 
-        // Desaparece el hero
-        hero.classList.add("hide");
+        // Animación de salida
+        hero.style.transition = "opacity .6s ease, transform .6s ease";
+        hero.style.opacity = "0";
+        hero.style.transform = "translateY(-40px)";
 
-        // Espera un poco y baja al mapa
+        // Después de la animación, eliminar completamente el hero
         setTimeout(() => {
+
+            hero.remove(); // ← desaparece para siempre
+
+            // Ir al mapa
             document.getElementById("mapa")
                 .scrollIntoView({ behavior: "smooth" });
-        }, 500);
+
+        }, 650);
 
     });
 

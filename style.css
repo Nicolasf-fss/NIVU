@@ -291,28 +291,3 @@ body{
     font-size:1rem;
 }
 
-/* ==========================
-   OCULTAR HERO AL EXPLORAR
-========================== */
-
-.hero.hide{
-
-    opacity:0;
-
-    transform:translateY(-40px);
-
-    pointer-events:none;
-
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
-
-    height:0;
-
-    min-height:0;
-
-    overflow:hidden;
-
-    padding:0;
-
-}
