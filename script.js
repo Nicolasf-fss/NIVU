@@ -29,6 +29,7 @@ window.addEventListener("load", () => {
 
     // Obtener clima real
     obtenerClima();
+    iniciarMapa();
 
 });
 
@@ -100,5 +101,85 @@ function traducirCodigo(codigo) {
     };
 
     return mapa[codigo] || "Condición desconocida";
+
+}
+
+// ==========================
+// MAPA REAL LEAFLET
+// ==========================
+
+let mapa;
+
+function iniciarMapa() {
+
+    mapa = L.map('map', {
+        zoomControl: true
+    }).setView([6.2442, -75.5812], 11);
+
+    // Mapa oscuro
+    L.tileLayer(
+        'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+        {
+            attribution: '&copy; OpenStreetMap &copy; CARTO'
+        }
+    ).addTo(mapa);
+
+    // Marcador Medellín
+    L.circleMarker([6.2442, -75.5812], {
+        radius: 10,
+        color: '#68f4ff',
+        fillColor: '#4cb8ff',
+        fillOpacity: 0.9,
+        weight: 2
+    })
+    .addTo(mapa)
+    .bindPopup('<b>Medellín</b><br>Centro del Valle de Aburrá');
+
+    // Barrios cercanos
+    const puntos = [
+        ['Bello', 6.3373, -75.5579],
+        ['Envigado', 6.1706, -75.5870],
+        ['Itagüí', 6.1683, -75.6110],
+        ['Sabaneta', 6.1516, -75.6163]
+    ];
+
+    puntos.forEach(p => {
+        L.circleMarker([p[1], p[2]], {
+            radius: 6,
+            color: '#4cb8ff',
+            fillColor: '#4cb8ff',
+            fillOpacity: 0.8,
+            weight: 1
+        })
+        .addTo(mapa)
+        .bindPopup(p[0]);
+    });
+
+    // Botón mi ubicación
+    document.getElementById('ubicacion')
+        .addEventListener('click', () => {
+
+            if (!navigator.geolocation) {
+                alert('Tu navegador no soporta geolocalización');
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(pos => {
+
+                const lat = pos.coords.latitude;
+                const lon = pos.coords.longitude;
+
+                mapa.setView([lat, lon], 13);
+
+                L.marker([lat, lon])
+                    .addTo(mapa)
+                    .bindPopup('📍 Estás aquí')
+                    .openPopup();
+
+            }, () => {
+                alert('No se pudo obtener tu ubicación');
+            });
+
+        });
 
 }

@@ -14,6 +14,11 @@
 
 </head>
 
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+
 <body>
 
     <div id="splash">
@@ -65,11 +70,32 @@
     <h2>Radar del Valle de Aburrá</h2>
     <p>Lluvia y nubosidad en tiempo real.</p>
 
-    <div class="map-placeholder">
-        <div class="live-badge">● EN VIVO</div>
-        <div class="location-btn">📍 Mi ubicación</div>
-        <div class="radar-label">Valle de Aburrá</div>
+   <div class="map-wrapper">
+
+    <div class="live-badge">🔴 EN VIVO</div>
+
+    <button class="location-btn" id="ubicacion">
+        📍 Mi ubicación
+    </button>
+
+    <div class="weather-card floating">
+
+        <div class="weather-main">
+            <h3 id="temp">--°C</h3>
+            <p id="condition">Cargando clima real...</p>
+        </div>
+
+        <div class="weather-details">
+            <div><span>💧 Humedad</span><strong id="humidity">--%</strong></div>
+            <div><span>💨 Viento</span><strong id="wind">-- km/h</strong></div>
+            <div><span>🌧️ Lluvia</span><strong id="rain">-- %</strong></div>
+        </div>
+
     </div>
+
+    <div id="map"></div>
+
+</div>
 
 <div class="weather-card">
 
@@ -100,6 +126,8 @@
 </section>
 
 </div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <script src="script.js"></script>
 
