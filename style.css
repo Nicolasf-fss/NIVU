@@ -1,8 +1,16 @@
+/* ==========================
+   RESET
+========================== */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
+
+/* ==========================
+   VARIABLES
+========================== */
 
 :root{
     --bg:#07131f;
@@ -16,20 +24,24 @@
     --cyan:#68f4ff;
 }
 
+/* ==========================
+   BASE
+========================== */
+
 html{
     scroll-behavior:smooth;
 }
 
 body{
     background:
-    radial-gradient(circle at top,#153452 0%,#07131f 55%,#040b12 100%);
+        radial-gradient(circle at top,#153452 0%,#07131f 55%,#040b12 100%);
 
     color:var(--text);
 
     font-family:
-    Inter,
-    Segoe UI,
-    sans-serif;
+        Inter,
+        Segoe UI,
+        sans-serif;
 
     overflow-x:hidden;
     min-height:100vh;
@@ -45,10 +57,12 @@ body{
 
 .hero{
     min-height:100vh;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:40px;
+
+    padding:40px 20px;
 }
 
 .hero-content{
@@ -58,7 +72,7 @@ body{
 
 .hero h1{
     font-size:clamp(4rem,10vw,8rem);
-    color:white;
+    color:var(--white);
     line-height:1;
     margin-bottom:15px;
 }
@@ -79,10 +93,14 @@ body{
 
 #explorar{
     margin-top:35px;
+
     border:none;
     cursor:pointer;
+
     padding:16px 28px;
+
     border-radius:14px;
+
     font-size:1rem;
     font-weight:600;
 
@@ -92,7 +110,7 @@ body{
         #68f4ff
     );
 
-    transition:.3s;
+    transition:transform .25s ease;
 }
 
 #explorar:hover{
@@ -135,7 +153,7 @@ body{
 }
 
 .logo h1{
-    color:white;
+    color:var(--white);
 
     font-size:clamp(4rem,9vw,8rem);
 
@@ -173,23 +191,23 @@ body{
 ========================== */
 
 .map-section{
-    padding:80px 20px;
+    padding:80px 20px 120px;
     text-align:center;
 }
 
 .map-section h2{
-    color:white;
+    color:var(--white);
     margin-bottom:8px;
     font-size:2rem;
 }
 
 .map-section p{
     opacity:.8;
-    margin-bottom:30px;
+    margin-bottom:10px;
 }
 
 /* ==========================
-   MAPA REAL
+   CONTENEDOR MAPA
 ========================== */
 
 .map-wrapper{
@@ -201,7 +219,7 @@ body{
     border-radius:28px;
     overflow:hidden;
 
-    border:1px solid rgba(255,255,255,.12);
+    border:1px solid var(--line);
 
     box-shadow:0 20px 60px rgba(0,0,0,.45);
 }
@@ -216,21 +234,22 @@ body{
 ========================== */
 
 .weather-card{
-    padding:24px;
-    border-radius:24px;
-
-    background:rgba(255,255,255,.06);
-
-    border:1px solid rgba(255,255,255,.10);
-
-    backdrop-filter:blur(12px);
-
     display:flex;
     flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+
     gap:24px;
 
-    justify-content:space-between;
-    align-items:center;
+    padding:24px;
+
+    border-radius:24px;
+
+    background:rgba(7,19,31,.82);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:blur(14px);
 }
 
 .weather-card.floating{
@@ -241,20 +260,12 @@ body{
 
     z-index:1000;
 
-    width:min(420px, calc(100% - 48px));
-
-    margin:0;
-
-    background:rgba(7,19,31,.82);
-
-    border:1px solid rgba(255,255,255,.12);
-
-    backdrop-filter:blur(14px);
+    width:min(430px, calc(100% - 48px));
 }
 
 .weather-main h3{
     font-size:clamp(2.5rem,6vw,4rem);
-    color:white;
+    color:var(--white);
     line-height:1;
 }
 
@@ -265,16 +276,18 @@ body{
 
 .weather-details{
     display:flex;
-    gap:22px;
     flex-wrap:wrap;
+    gap:22px;
 }
 
 .weather-details div{
-    min-width:120px;
+    min-width:110px;
 
     display:flex;
     flex-direction:column;
     gap:6px;
+
+    text-align:left;
 }
 
 .weather-details span{
@@ -283,7 +296,7 @@ body{
 }
 
 .weather-details strong{
-    color:white;
+    color:var(--white);
     font-size:1.1rem;
 }
 
@@ -303,11 +316,11 @@ body{
 
     border-radius:12px;
 
-    background:rgba(7,19,31,.85);
+    background:rgba(7,19,31,.88);
 
     border:1px solid rgba(255,255,255,.12);
 
-    color:white;
+    color:var(--white);
 
     font-size:.9rem;
     font-weight:600;
@@ -325,15 +338,16 @@ body{
 
     z-index:1000;
 
-    display:flex;
+    display:inline-flex;
     align-items:center;
+    justify-content:center;
     gap:8px;
 
     padding:12px 18px;
 
-    width:auto;
-    height:auto;
-    min-width:unset;
+    width:auto !important;
+    height:auto !important;
+    min-width:0 !important;
 
     border:none;
     border-radius:14px;
@@ -344,16 +358,20 @@ body{
 
     font-size:.95rem;
     font-weight:700;
+    line-height:1;
 
     cursor:pointer;
 
     box-shadow:0 10px 25px rgba(76,184,255,.35);
 
-    transition:transform .2s ease;
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
 }
 
 .location-btn:hover{
     transform:translateY(-2px);
+    box-shadow:0 14px 28px rgba(76,184,255,.45);
 }
 
 /* Evita estilos extraños de Leaflet */
@@ -363,13 +381,36 @@ body{
 }
 
 /* ==========================
+   LEAFLET
+========================== */
+
+.leaflet-control-zoom{
+    margin-top:14px !important;
+    margin-left:14px !important;
+}
+
+.leaflet-popup-content-wrapper{
+    border-radius:14px;
+    background:#0c1f33;
+    color:#fff;
+}
+
+.leaflet-popup-tip{
+    background:#0c1f33;
+}
+
+/* ==========================
    RESPONSIVE
 ========================== */
 
 @media (max-width:768px){
 
     .hero{
-        padding:24px;
+        padding:24px 16px;
+    }
+
+    .map-section{
+        padding:60px 12px 100px;
     }
 
     #map{
@@ -380,6 +421,21 @@ body{
         top:16px;
         left:16px;
         width:calc(100% - 32px);
+    }
+
+    .weather-card{
+        gap:16px;
+        padding:18px;
+    }
+
+    .weather-details{
+        width:100%;
+        justify-content:space-between;
+        gap:14px;
+    }
+
+    .weather-details div{
+        min-width:90px;
     }
 
     .live-badge{
@@ -394,13 +450,5 @@ body{
         right:16px;
         padding:10px 14px;
         font-size:.9rem;
-    }
-
-    .weather-details{
-        gap:16px;
-    }
-
-    .weather-details div{
-        min-width:100px;
     }
 }

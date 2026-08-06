@@ -8,127 +8,119 @@
 
     <title>NIVU</title>
 
-    <meta name="description" content="NIVU - Plataforma inteligente de monitoreo meteorológico del Valle de Aburrá">
+    <meta name="description"
+          content="NIVU - Plataforma inteligente de monitoreo meteorológico del Valle de Aburrá">
 
     <link rel="stylesheet" href="style.css">
 
-</head>
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
 
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-/>
+</head>
 
 <body>
 
+    <!-- Splash inicial -->
     <div id="splash">
 
-    <div class="logo">
+        <div class="logo">
 
-        <h1>NIVU</h1>
+            <h1>NIVU</h1>
+            <p>La atmósfera nunca deja de hablar.</p>
 
-        <p>La atmósfera nunca deja de hablar.</p>
-
-    </div>
-
-</div>
-
-   <div id="app">
-
-    <section id="hero" class="hero">
-
-        <div class="hero-content">
-
-            
-
-            <h1>
-                NIVU
-            </h1>
-
-            <h2>
-                La atmósfera nunca deja de hablar.
-            </h2>
-
-            <p class="description">
-
-                Plataforma inteligente de monitoreo meteorológico
-                del Valle de Aburrá.
-
-            </p>
-
-            <button id="explorar">
-
-                Explorar en tiempo real →
-
-            </button>
-
-        </div>
-
-    </section>
-
-    <section id="mapa" class="map-section">
-    <h2>Radar del Valle de Aburrá</h2>
-    <p>Lluvia y nubosidad en tiempo real.</p>
-
-   <div class="map-wrapper">
-
-    <div class="live-badge">🔴 EN VIVO</div>
-
-    <button class="location-btn" id="ubicacion">
-        📍 Mi ubicación
-    </button>
-
-    <div class="weather-card floating">
-
-        <div class="weather-main">
-            <h3 id="temp">--°C</h3>
-            <p id="condition">Cargando clima real...</p>
-        </div>
-
-        <div class="weather-details">
-            <div><span>💧 Humedad</span><strong id="humidity">--%</strong></div>
-            <div><span>💨 Viento</span><strong id="wind">-- km/h</strong></div>
-            <div><span>🌧️ Lluvia</span><strong id="rain">-- %</strong></div>
         </div>
 
     </div>
 
-    <div id="map"></div>
+    <div id="app">
 
-</div>
+        <!-- Pantalla de presentación -->
+        <section id="hero" class="hero">
 
-<div class="weather-card">
+            <div class="hero-content">
 
-    <div class="weather-main">
-        <h3 id="temp">--°C</h3>
-        <p id="condition">Cargando clima real...</p>
+                <h1>NIVU</h1>
+
+                <h2>La atmósfera nunca deja de hablar.</h2>
+
+                <p class="description">
+
+                    Plataforma inteligente de monitoreo meteorológico
+                    del Valle de Aburrá.
+
+                </p>
+
+                <button id="explorar">
+
+                    Explorar en tiempo real →
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- Mapa principal -->
+        <section id="mapa" class="map-section">
+
+            <h2>Radar del Valle de Aburrá</h2>
+            <p>Lluvia y nubosidad en tiempo real.</p>
+
+            <div class="map-wrapper">
+
+                <!-- Indicador en vivo -->
+                <div class="live-badge">🔴 EN VIVO</div>
+
+                <!-- Botón de ubicación -->
+                <button class="location-btn" id="ubicacion">
+                    📍 Mi ubicación
+                </button>
+
+                <!-- Tarjeta de clima flotante -->
+                <div class="weather-card floating">
+
+                    <div class="weather-main">
+                        <h3 id="temp">--°C</h3>
+                        <p id="condition">Cargando clima real...</p>
+                    </div>
+
+                    <div class="weather-details">
+
+                        <div>
+                            <span>💧 Humedad</span>
+                            <strong id="humidity">--%</strong>
+                        </div>
+
+                        <div>
+                            <span>💨 Viento</span>
+                            <strong id="wind">-- km/h</strong>
+                        </div>
+
+                        <div>
+                            <span>🌧️ Lluvia</span>
+                            <strong id="rain">-- %</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Contenedor del mapa Leaflet -->
+                <div id="map"></div>
+
+            </div>
+
+        </section>
+
     </div>
 
-    <div class="weather-details">
-        <div>
-            <span>💧 Humedad</span>
-            <strong id="humidity">--%</strong>
-        </div>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-        <div>
-            <span>💨 Viento</span>
-            <strong id="wind">-- km/h</strong>
-        </div>
-
-        <div>
-            <span>🌧️ Lluvia</span>
-            <strong id="rain">-- %</strong>
-        </div>
-    </div>
-
-</div>
-
-</section>
-
-</div>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
+    <!-- Tu JavaScript -->
     <script src="script.js"></script>
 
 </body>
